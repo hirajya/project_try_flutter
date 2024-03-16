@@ -5,86 +5,44 @@ void main() {
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-  int count = 0;
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
+  String buttonName = 'Click';
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.blue,
-          title: const Text('Home'),
-        ),
-
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            setState(() {
-              count++;
-            });
-          },
-          child: Icon(Icons.add),
+          title: const Text('App Title'),
           backgroundColor: Colors.blue,
         ),
-
         body: Center(
-          child: Text(
-            '$count',
-            style: const TextStyle(fontSize: 60),
+          child: ElevatedButton(
+            onPressed: () {
+              setState(() {
+                buttonName = 'Clicked';
+              });
+            },
+            child: Text(buttonName),
           ),
         ),
-
-        bottomNavigationBar: BottomNavigationBar(items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Business',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
-          ),
-        ]),
-
-        drawer: const Drawer(child: Text('Yo!')),
-
-        // body: ListView(
-        //   scrollDirection: Axis.horizontal,
-        //   addAutomaticKeepAlives: false,
-        //   children: [
-        //     Container(
-        //       width: 400,
-        //       color: Colors.red,
-        //     ),
-        //     Container(
-        //       width: 400,
-        //       color: Colors.blue,
-        //     ),
-        //     Container(
-        //       width: 400,
-        //       color: Colors.green,
-        //     ),
-        //   ]
-        //   )
+        bottomNavigationBar: BottomNavigationBar(
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.settings), label: 'Settings'),
+          ],
+        ),
       ),
     );
   }
