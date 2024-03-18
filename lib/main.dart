@@ -36,7 +36,7 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-class FirstPage extends StatelessWidget {
+class FirstPage extends StatefulWidget {
   final int currentIndex;
   final VoidCallback onButtonPressed;
   final ValueChanged<int> onBottomNavBarTap;
@@ -49,6 +49,13 @@ class FirstPage extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  _FirstPageState createState() => _FirstPageState();
+}
+
+class _FirstPageState extends State<FirstPage> {
+  bool showImage = false;
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -59,41 +66,60 @@ class FirstPage extends StatelessWidget {
         backgroundColor: Colors.black,
       ),
       body: Center(
-        child: currentIndex == 0
-            ? Container(
-                height: double.infinity,
-                width: double.infinity,
-                color: Colors.white,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        foregroundColor: Colors.white,
-                        backgroundColor: Colors.black,
-                      ),
-                      onPressed: onButtonPressed,
-                      child: Text('Click'),
+        child: widget.currentIndex == 0
+            ? showImage
+                ? GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        showImage = false;
+                      });
+                    },
+                    child: Image.asset('images/sadpepe.jpg'),
+                  )
+                : Container(
+                    height: double.infinity,
+                    width: double.infinity,
+                    color: Colors.white,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            foregroundColor: Colors.white,
+                            backgroundColor: Colors.black,
+                          ),
+                          onPressed: widget.onButtonPressed,
+                          child: Text('Click'),
+                        ),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            foregroundColor: Colors.black,
+                            backgroundColor: Colors.white,
+                          ),
+                          onPressed: () {
+                            widget.onButtonPressed();
+                            Navigator.of(context).push(
+                              MaterialPageRoute(builder: (BuildContext context) {
+                                return const SecondPage();
+                              }),
+                            );
+                          },
+                          child: Text('Click'),
+                        ),
+                      ],
                     ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        foregroundColor: Colors.black,
-                        backgroundColor: Colors.white,
-                      ),
-                      onPressed: () {
-                        onButtonPressed();
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (BuildContext context) {
-                          return const SecondPage();
-                        }));
-                      },
-                      child: Text('Click'),
-                    ),
-                  ],
-                ),
-              )
-            : Image.asset('images/sadpepe.jpg'),
+                  )
+            : GestureDetector(
+                onTap: () {
+                  setState(() {
+                    showImage = !showImage;
+                  });
+                },
+                child: showImage
+                    ? Image.asset('images/sadpepe.jpg')
+                    : Image.asset('images/whatcat.png'),
+              ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
@@ -106,12 +132,13 @@ class FirstPage extends StatelessWidget {
             label: 'Settings',
           ),
         ],
-        currentIndex: currentIndex,
-        onTap: onBottomNavBarTap,
+        currentIndex: widget.currentIndex,
+        onTap: widget.onBottomNavBarTap,
       ),
     );
   }
 }
+
 
 class SecondPage extends StatelessWidget {
   const SecondPage({Key? key}) : super(key: key);
@@ -126,8 +153,21 @@ class SecondPage extends StatelessWidget {
         ),
         backgroundColor: Colors.black,
       ),
-      body: Center(
+      body: const Center(
         child: Text('Second Page'),
+      ),
+    );
+  }
+}
+
+class NextPage extends StatelessWidget {
+  const NextPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Next Page'),
       ),
     );
   }
