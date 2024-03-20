@@ -1,24 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:project_try_flutter/main.dart';
+import 'package:project_try_flutter/screens/login_screen.dart';
+import 'package:project_try_flutter/screens/splash_screen.dart'; // Importing HomePage from login_screen.dart
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MaterialApp(
-      home: HomePage(),
+      home: SplashScreen(),
     ));
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Verify that our counter starts at 0. (Note: We're verifying text from the login screen now)
+    expect(find.text('Login'), findsOneWidget); // Assuming 'Login' is displayed on the home screen
+    expect(find.text('Welcome Back'), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // You can continue adding more specific widget tests for your login screen UI here.
   });
 }
