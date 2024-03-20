@@ -52,14 +52,15 @@ class _SplashScreenState extends State<SplashScreen>
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/images/meme_doge_dog.png', // C:\Users\angel\StudioProjects\project_try_flutter\images\NU-with-Tagline.png
-              width: 100,
-              height: 100,
+              'images/NU-with-Tagline.png', // C:\Users\angel\StudioProjects\project_try_flutter\images\NU-with-Tagline.png
+              width: 500,
+              height: 500,
               color: Colors.white, // Adjust color if needed
             ),
-            SizedBox(height: 20),
-            Text('Flutter tps',
-                style: TextStyle(fontSize: 30, color: Colors.white)),
+            const SizedBox(height: 5),
+            const CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+            ),
           ],
         ),
       ),
