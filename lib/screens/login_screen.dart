@@ -56,14 +56,28 @@ class _HomePageState extends State<HomePage>
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+              // Image.asset(
+              // 'images/nulogo.png',
+              // height: 100, // Adjust the height as needed
+              // width: 100, // Adjust the width as needed
+              // ),
               const SizedBox(
-                height: 80,
+                height: 5,
               ),
               Padding(
-                padding: const EdgeInsets.all(20),
+                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  
                   children: <Widget>[
+                    Image.asset(
+                    'images/nulogo.png',
+                    height: 85, // Adjust the height as needed
+                    width: 85, // Adjust the width as needed
+                    ),
+                    const SizedBox(
+                      height:10
+                    ),
                     FadeAnimation(
                       delay: 1.0,
                       child: FadeTransition(

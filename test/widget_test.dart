@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:project_try_flutter/screens/login_screen.dart';
-import 'package:project_try_flutter/screens/splash_screen.dart'; // Importing HomePage from login_screen.dart
+import 'package:GDSCxNU_FlutterProject/screens/login_screen.dart';
+import 'package:GDSCxNU_FlutterProject/screens/splash_screen.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
