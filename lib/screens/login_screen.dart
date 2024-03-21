@@ -23,10 +23,10 @@ class _HomePageState extends State<HomePage>
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 1),
+      duration: const Duration(seconds: 3),
     );
     _animation =
-        Tween<double>(begin: 0.0, end: 1.0).animate(_animationController);
+        Tween<double>(begin: 0.0, end: 2.0).animate(_animationController);
     _animationController.forward();
   }
 

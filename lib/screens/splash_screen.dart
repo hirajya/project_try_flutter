@@ -55,7 +55,6 @@ class _SplashScreenState extends State<SplashScreen>
               'images/NU-with-Tagline.png', // C:\Users\angel\StudioProjects\project_try_flutter\images\NU-with-Tagline.png
               width: 500,
               height: 500,
-              color: Colors.white, // Adjust color if needed
             ),
             const SizedBox(height: 5),
             const CircularProgressIndicator(

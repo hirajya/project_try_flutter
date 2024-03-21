@@ -7,7 +7,7 @@ void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MaterialApp(
-      home: HomePage(),
+      home: SplashScreen(),
     ));
 
     // Verify that our counter starts at 0. (Note: We're verifying text from the login screen now)
